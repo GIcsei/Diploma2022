@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppNameText" xml:space="preserve">
+    <value>PSI Checker v2.0</value>
+  </data>
+  <data name="BidirMenuText" xml:space="preserve">
+    <value>Bidir communcation</value>
+  </data>
+  <data name="CheckerControlBoardSettingsBypassRelayText" xml:space="preserve">
+    <value>Bypass relay</value>
+  </data>
+  <data name="CheckerControlBoardSettingsEcuText" xml:space="preserve">
+    <value>ECU</value>
+  </data>
+  <data name="CheckerControlBoardSettingsExternalSourceText" xml:space="preserve">
+    <value>External source</value>
+  </data>
+  <data name="CheckerControlBoardSettingsExtSrcRelayText" xml:space="preserve">
+    <value>External src. relay</value>
+  </data>
+  <data name="CheckerControlBoardSettingsGainRelayText" xml:space="preserve">
+    <value>Gain relay</value>
+  </data>
+  <data name="CheckerControlBoardSettingsHeaderText" xml:space="preserve">
+    <value>Board settings</value>
+  </data>
+  <data name="CheckerControlBoardSettingsInternalSourceText" xml:space="preserve">
+    <value>Internal source</value>
+  </data>
+  <data name="CheckerControlBoardSettingsLoadRelayText" xml:space="preserve">
+    <value>Load relay</value>
+  </data>
+  <data name="CheckerControlBoardSettingsOutputRelayText" xml:space="preserve">
+    <value>Output relay</value>
+  </data>
+  <data name="CheckerControlBoardSettingsSensorText" xml:space="preserve">
+    <value>Sensor</value>
+  </data>
+  <data name="CheckerControlBoardSettingsSignalRelayText" xml:space="preserve">
+    <value>Signal relay</value>
+  </data>
+  <data name="CheckerControlLoadPatternText" xml:space="preserve">
+    <value>Load Pattern</value>
+  </data>
+  <data name="CheckerControlMeasureAllText" xml:space="preserve">
+    <value>Measure All</value>
+  </data>
+  <data name="CheckerControlMeasureFromSelectedText" xml:space="preserve">
+    <value>Measure From Selected</value>
+  </data>
+  <data name="CheckerControlMeasureSelectedText" xml:space="preserve">
+    <value>Measure Selected</value>
+  </data>
+  <data name="CheckerControlPatternSelectorText" xml:space="preserve">
+    <value>Pattern selector</value>
+  </data>
+  <data name="CheckerControlPowerOnText" xml:space="preserve">
+    <value>Power On</value>
+  </data>
+  <data name="CheckerControl
+		ettingsBitLengthText" xml:space="preserve">
+    <value>Bit length</value>
+  </data>
+  <data name="CheckerControlProtocolSettingsBitRateText" xml:space="preserve">
+    <value>Bit rate</value>
+  </data>
+  <data name="CheckerControlProtocolSettingsCheckSumText" xml:space="preserve">
+    <value>Check Sum</value>
+  </data>
+  <data name="CheckerControlProtocolSettingsHeaderText" xml:space="preserve">
+    <value>Protocol Settings</value>
+  </data>
+  <data name="CheckerControlProtocolSettingsSyncDistanceText" xml:space="preserve">
+    <value>Sync distance</value>
+  </data>
+  <data name="CheckerControlProtocolSettingsSyncTypeText" xml:space="preserve">
+    <value>Sync type</value>
+  </data>
+  <data name="CheckerControlSaveLocationSelectorText" xml:space="preserve">
+    <value>Save location</value>
+  </data>
+  <data name="CheckerControlSensorSelectorText" xml:space="preserve">
+    <value>Sensor selector</value>
+  </data>
+  <data name="CheckerMenuText" xml:space="preserve">
+    <value>Analog testing</value>
+  </data>
+  <data name="DisabledText" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="EnabledText" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="FailedInitializationText" xml:space="preserve">
+    <value>Initialization failed!</value>
+  </data>
+  <data name="InitializationStartText" xml:space="preserve">
+    <value>Start initialization</value>
+  </data>
+  <data name="InitPagePsiConfigPathText" xml:space="preserve">
+    <value>Path to PSI config file</value>
+  </data>
+  <data name="InitPagePsiConfigPathTipText" xml:space="preserve">
+    <value>Path to the config file.</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="LanguageFlag" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Flags\en-US.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LoadText" xml:space="preserve">
+    <value>Load from file</value>
+  </data>
+  <data name="ResultsMenuText" xml:space="preserve">
+    <value>Results</value>
+  </data>
+  <data name="SaveText" xml:space="preserve">
+    <value>Save to file</value>
+  </data>
+  <data name="ScopeAttenuationText" xml:space="preserve">
+    <value>Probe attenuation</value>
+  </data>
+  <data name="ScopeCouplingText" xml:space="preserve">
+    <value>Coupling</value>
+  </data>
+  <data name="ScopeInputImpedanceText" xml:space="preserve">
+    <value>Inpit Impedance</value>
+  </data>
+  <data name="ScopeMenuText" xml:space="preserve">
+    <value>Scope setup</value>
+  </data>
+  <data name="ScopePowerButtonText" xml:space="preserve">
+    <value>Power</value>
+  </data>
+  <data name="ScopeRangeText" xml:space="preserve">
+    <value>Input range</value>
+  </data>
+  <data name="SettingsMenuText" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SimulyzerMenuText" xml:space="preserve">
+    <value>Digital testing</value>
+  </data>
+  <data name="TestMenuText" xml:space="preserve">
+    <value>Test functions</value>
+  </data>
+  <data name="VersionText" xml:space="preserve">
+    <value>Version number</value>
+  </data>
+</root>

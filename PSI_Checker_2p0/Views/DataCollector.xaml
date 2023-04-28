@@ -1,0 +1,122 @@
+﻿<UserControl x:Class="PSI_Checker_2p0.DataCollector"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PSI_Checker_2p0"
+        xmlns:viewmodell="clr-namespace:PSI_Checker_2p0.ViewModel.ViewModels;assembly=PSI_Checker_2p0.ViewModel"
+             xmlns:enums ="clr-namespace:PSI_Checker_2p0.Enums;assembly=PSI_Checker_2p0.Enums"
+             xmlns:utils ="clr-namespace:PSI_Checker_2p0.Utils"
+             xmlns:localization="clr-namespace:PSI_Checker_2p0.Localization"
+             d:DataContext="{d:DesignInstance Type=viewmodell:ScopeVM}"
+             mc:Ignorable="d" Height="Auto" Width="Auto">
+    
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Ellipse x:Name="led1" Grid.Row="2" Grid.Column="3"
+                 HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                 Width="{Binding ActualWidth, ElementName=ScopeConnect}" Height="{Binding ActualWidth, ElementName=ScopeConnect}">
+            <Ellipse.Style>
+                <Style TargetType="Ellipse">
+                    <Setter Property="Fill">
+                        <Setter.Value>
+                            <SolidColorBrush Color="DarkRed" Opacity="0.65"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=OngoingMeas}" Value="true">
+                            <Setter Property="Fill">
+                                <Setter.Value>
+                                    <RadialGradientBrush GradientOrigin="0.5,0.5" RadiusX="0.5" RadiusY="0.5"
+                                                         Center="0.5,0.5" >
+                                        <GradientStop Color="DarkGreen" Offset="0"/>
+                                        <GradientStop Color="LightGreen" Offset="1"/>
+                                    </RadialGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Ellipse.Style>
+        </Ellipse>
+        <Button x:Name="ScopeConnect" Content="{localization:Localization ScopePowerButtonText}" Grid.Row="2" Grid.Column="4"
+                HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                Command="{Binding Path=MeasState}"
+                ToolTip="Connect to the chosen scope and start data collection."/>
+        <ContentControl x:Name="PSIGraph" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"
+                        VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <ContentPresenter Content="{Binding PlotControl}" CacheMode="BitmapCache" />
+        </ContentControl>
+        <StackPanel Grid.Row="2" Grid.Column="0">
+            <ComboBox ItemsSource="{Binding DeviceIDs}" SelectedItem="{Binding SelectedDeviceID}"
+                      Margin="5,5,5,0"
+                      ToolTip="Select the device which the software will try to connect."/>
+            <TextBox Text="{Binding SampleRate}" Margin="5"
+                     ToolTip="Sets the sample rate for all channels."/>
+        </StackPanel>
+        <ScrollViewer Grid.Column="5" Grid.Row="0" VerticalScrollBarVisibility="Auto">
+        <ItemsControl ItemsSource="{Binding UsedChannels}" HorizontalAlignment="Stretch"
+                      VerticalAlignment="Center" Margin="20,0,20,0">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Border BorderThickness="1" BorderBrush="AliceBlue">
+                            <StackPanel Background="Wheat">
+                                <Border BorderBrush="Black" BorderThickness="0.5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}" FontStretch="Expanded"
+                                               FontWeight="DemiBold" TextAlignment="Center"
+                                               VerticalAlignment="Center" Margin="10,0,20,0"/>
+                                    <CheckBox Style="{StaticResource ToggleSwitch}" IsChecked="{Binding IsEnabled}" IsEnabled="{Binding Modifiable}"/>
+                                </StackPanel>
+                                </Border>
+                                <StackPanel Margin="0,5,0,5" Visibility="{Binding IsEnabled, Converter={local:BoolToVisibilityConverter}}">
+                                    <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                                            <TextBlock Text="{localization:Localization ScopeCouplingText}" Margin="15,0,15,0" TextAlignment="Justify"
+                                                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                   Width="75" TextWrapping="WrapWithOverflow"/>
+                                        <ComboBox ItemsSource="{Binding Source={local:EnumToStringConverter {x:Type enums:CouplingEnum}}}"
+                                          SelectedItem="{Binding Coupling}" Margin="20,0,15,0" Width="75"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal"  Margin="0,5,0,5">
+                                            <TextBlock Text="{localization:Localization ScopeAttenuationText}"  Margin="15,0,15,0" TextAlignment="Justify"
+                                                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                   Width="75" TextWrapping="WrapWithOverflow"/>
+                                        <TextBox Text="{Binding Attenuation}"  Margin="20,0,15,0" Width="75"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal"  Margin="0,5,0,5">
+                                            <TextBlock Text="{localization:Localization ScopeInputImpedanceText}"  Margin="15,0,15,0" TextAlignment="Justify"
+                                                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                   Width="75" TextWrapping="WrapWithOverflow"/>
+                                        <ComboBox ItemsSource="{Binding Source={local:EnumToStringConverter {x:Type enums:ImpedanceEnum}}}"
+                                          SelectedItem="{Binding Impedance}"  Margin="20,0,15,0" Width="75"/>
+                                    </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,5,0,5">
+                                            <TextBlock Text="{localization:Localization ScopeRangeText}"  Margin="15,0,15,0" TextAlignment="Justify"
+                                                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                   Width="75" TextWrapping="WrapWithOverflow"/>
+                                            <TextBox Text="{Binding Range}"  Margin="20,0,15,0" Width="75"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                    
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        </ScrollViewer>
+        </Grid>
+</UserControl>

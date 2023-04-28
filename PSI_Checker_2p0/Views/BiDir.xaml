@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="PSI_Checker_2p0.Views.BiDir"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewmodell ="clr-namespace:PSI_Checker_2p0.ViewModel"
+             xmlns:local="clr-namespace:PSI_Checker_2p0.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             d:DataContext="{d:DesignInstance viewmodell:BiDirVM}">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <Button Content="Enter BiDir" ToolTip="Send enter BiDir command to the sensor if possible."/>
+        <StackPanel Grid.Column="1" Grid.Row="0">
+            <ItemsControl>
+                
+            </ItemsControl>
+            <Button Content="Create and send command"/>
+        </StackPanel>
+        <Border BorderBrush="Black" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <Button Content="Add"/>
+                    <Button Content="Delete Last"/>
+                    <Button Content="Send all"/>
+                </StackPanel>
+                <ListView/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

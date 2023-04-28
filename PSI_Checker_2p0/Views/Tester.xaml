@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="PSI_Checker_2p0.Views.Tester"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ni="http://schemas.ni.com/controls/2009/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:viewmodell="clr-namespace:PSI_Checker_2p0.ViewModel"
+        mc:Ignorable="d" SnapsToDevicePixels="True"
+             d:DataContext="{d:DesignInstance Type=viewmodell:TesterVM}">
+
+    <Grid Margin="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ContentPresenter Grid.Row="0" Content="{Binding PlotControl}"/>
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal">
+            <Button Content="Load results" Command="{Binding LoadData}"/>
+            <Button Content="Analyze" Command="{Binding Analyze}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

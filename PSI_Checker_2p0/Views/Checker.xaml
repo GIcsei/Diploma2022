@@ -1,0 +1,178 @@
+﻿<UserControl x:Class="PSI_Checker_2p0.Views.Checker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PSI_Checker_2p0"
+             xmlns:utils ="clr-namespace:PSI_Checker_2p0.Localization"
+             xmlns:viewmodell="clr-namespace:PSI_Checker_2p0.ViewModel.ViewModels;assembly=PSI_Checker_2p0.ViewModel"
+             xmlns:others="clr-namespace:PSI_Checker_2p0;assembly=PSI_Checker_2p0.Others"
+             xmlns:enums ="clr-namespace:PSI_Checker_2p0.Enums;assembly=PSI_Checker_2p0.Enums"
+             xmlns:sensor ="clr-namespace:PSI_Checker_2p0.Sensor;assembly=PSI_Checker_2p0.Sensor"
+             xmlns:protocol ="clr-namespace:PSI_Checker_2p0.Protocol;assembly=PSI_Checker_2p0.Protocol"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=viewmodell:CheckerVM}"
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid Background="AliceBlue" Margin="0,0,-49,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Grid.Row="0" Grid.Column="0" Margin="5"
+                  Style="{StaticResource GroupBoxHeader}"
+                  Header="{utils:Localization CheckerControlProtocolSettingsHeaderText}">
+            <Grid Margin="5" Background="LightGray">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="0">
+                    <TextBlock Text="{utils:Localization CheckerControlProtocolSettingsBitLengthText}" HorizontalAlignment="Center"/>
+                <ComboBox ItemsSource="{Binding Source={local:EnumToStringConverter {x:Type enums:PSI5_Mode}}}"
+                      SelectedItem="{Binding SelectedMode}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="1">
+                    <TextBlock Text="{utils:Localization CheckerControlProtocolSettingsCheckSumText}" HorizontalAlignment="Center"/>
+                <ComboBox ItemsSource="{Binding Source={local:EnumToStringConverter {x:Type enums:PSI5_CheckSum}}}"
+                      SelectedItem="{Binding SelectedCheckSum}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="0">
+                    <TextBlock Text="{utils:Localization CheckerControlProtocolSettingsSyncTypeText}" HorizontalAlignment="Center"/>
+                <ComboBox ItemsSource="{Binding Source={local:EnumToStringConverter {x:Type enums:PSI5_Sync}}}"
+                      SelectedItem="{Binding SelectedSync}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="1">
+                    <TextBlock Text="{utils:Localization CheckerControlProtocolSettingsSyncDistanceText}" HorizontalAlignment="Center"/>
+                <ComboBox ItemsSource="{Binding Source={local:EnumToStringConverter {x:Type enums:PSI5_SyncDist}}}"
+                      SelectedItem="{Binding SelectedSyncDist}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Grid.Column="0">
+                    <TextBlock Text="{utils:Localization CheckerControlProtocolSettingsBitRateText}" HorizontalAlignment="Center"/>
+                <ComboBox ItemsSource="{Binding Source={local:EnumToStringConverter {x:Type enums:PSI5_DataRate}}}"
+                      SelectedItem="{Binding SelectedDataRate}"/>
+            </StackPanel>
+            <Button Content="{utils:Localization LoadText}" Grid.Column="1" Grid.Row="2"
+                    HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+        </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                  Style="{StaticResource GroupBoxHeader}"
+                  Header="{utils:Localization CheckerControlBoardSettingsHeaderText}"
+                  HorizontalAlignment="Center">
+            <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal"
+                        Background="LightGray"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <CheckBox Style="{StaticResource ToggleSwitch}" Content="{utils:Localization CheckerControlBoardSettingsSignalRelayText}"
+                          local:TurnedOffProperty.Value ="{utils:Localization CheckerControlBoardSettingsEcuText}"
+                          local:TurnedOnProperty.Value ="{utils:Localization CheckerControlBoardSettingsSensorText}"
+                          IsChecked="{Binding Signal}"/>
+                <CheckBox Style="{StaticResource ToggleSwitch}" Content="{utils:Localization CheckerControlBoardSettingsExtSrcRelayText}"
+                          local:TurnedOffProperty.Value ="{utils:Localization CheckerControlBoardSettingsInternalSourceText}"
+                          local:TurnedOnProperty.Value ="{utils:Localization CheckerControlBoardSettingsExternalSourceText}"
+                          IsChecked="{Binding ExtSrc}"/>
+                <CheckBox Style="{StaticResource ToggleSwitch}" Content="{utils:Localization CheckerControlBoardSettingsOutputRelayText}"
+                          local:TurnedOffProperty.Value ="{utils:Localization DisabledText}"
+                          local:TurnedOnProperty.Value ="{utils:Localization EnabledText}"
+                          IsChecked="{Binding Output}"/>
+                <CheckBox Style="{StaticResource ToggleSwitch}" Content="{utils:Localization CheckerControlBoardSettingsLoadRelayText}"
+                          local:TurnedOffProperty.Value ="{utils:Localization DisabledText}"
+                          local:TurnedOnProperty.Value ="{utils:Localization EnabledText}"
+                          IsChecked="{Binding Load}"/>
+                <CheckBox Style="{StaticResource ToggleSwitch}" Content="{utils:Localization CheckerControlBoardSettingsBypassRelayText}"
+                          local:TurnedOffProperty.Value ="{utils:Localization DisabledText}"
+                          local:TurnedOnProperty.Value ="{utils:Localization EnabledText}"
+                          IsChecked="{Binding Bypass}"/>
+                <CheckBox Style="{StaticResource ToggleSwitch}" Content="{utils:Localization CheckerControlBoardSettingsGainRelayText}"
+                          local:TurnedOffProperty.Value ="1x"
+                          local:TurnedOnProperty.Value ="2x"
+                          IsChecked="{Binding Gain}"/>
+            </StackPanel>
+        </GroupBox>
+
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1">
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Button Content="{utils:Localization CheckerControlLoadPatternText}" Command="{Binding LoadPatternFile}"/>
+            </StackPanel>
+            <StackPanel 
+                    IsEnabled="{Binding IsPowered}">
+            <ComboBox Margin="5"
+                  ItemsSource="{Binding Patterns}"
+                  Tag="{utils:Localization CheckerControlPatternSelectorText}"
+                  SelectedItem="{Binding SelectedPattern}"
+                  VerticalAlignment="Center" Template="{StaticResource ComboboxWaterMark}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type others:Pattern}">
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox Margin="5"
+                ItemsSource="{Binding Sensors}"
+                      SelectedItem="{Binding SelectedSensor}"
+                      Tag="{utils:Localization CheckerControlSensorSelectorText}"
+                      Template="{StaticResource ComboboxWaterMark}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type sensor:ISensor}">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding Variant}" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <ComboBox ItemsSource="{Binding ProtocolList}" SelectedItem="{Binding Protocol}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type protocol:IProtocol}">
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button Margin="5"
+                Content="{utils:Localization CheckerControlSaveLocationSelectorText}" Command="{Binding SelectSaveLocation}"/>
+            <StackPanel Margin="5" Orientation="Horizontal" IsEnabled="{Binding Patterns, Converter={local:ListToIsEnabledConverter}}">
+                    <Button Content="{utils:Localization CheckerControlMeasureAllText}" Margin="0,0,5,0" Command="{Binding MeasureAll}"/>
+                    <Button Content="{utils:Localization CheckerControlMeasureFromSelectedText}" Margin="0,0,5,0"  Command="{Binding MeasureFromSelected}"/>
+                    <Button Content="{utils:Localization CheckerControlMeasureSelectedText}" Command="{Binding MeasureSelected}"/>
+            </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+        <Button Grid.Column="0" Grid.Row="1"
+                Margin="25"
+                Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
+                Height="200"
+                Content="{utils:Localization CheckerControlPowerOnText}"
+                Background="Red"
+                Foreground="Black"
+                FontSize="18"
+                FontWeight="Bold"
+                Command="{Binding PowerOn}"/>
+        
+
+        <ContentPresenter Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                          Content="{Binding PlotControl}"/>
+        <GroupBox Header="Log"
+            Style="{StaticResource GroupBoxHeader}"
+            Grid.Row="2" Grid.Column="2">
+            <TextBox Text="{Binding LogMessages}"
+                   Background="Black"
+                   Foreground="White"
+                   AcceptsReturn ="true"
+                 Focusable="False"/>
+        </GroupBox>
+    </Grid>
+</UserControl>
